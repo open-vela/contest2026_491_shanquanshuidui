@@ -1,0 +1,12 @@
+{
+  "app_name": "情绪传感",
+  "home": "主页",
+  "watch_mode": "手表模式",
+  "history": "历史记录",
+  "interview": "生成访谈",
+  "trends": "数据趋势",
+  "wake_hint": "输入 hello openvela 唤醒",
+  "listening": "正在聆听...",
+  "no_records": "尚无记录",
+  "generate_report": "生成报告"
+}

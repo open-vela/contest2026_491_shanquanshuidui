@@ -1,0 +1,13 @@
+{
+  "name": "emotion-sense-quickapp",
+  "version": "1.0.0",
+  "description": "情绪传感 OpenVela Quick App",
+  "scripts": {
+    "build": "aiot build",
+    "debug": "aiot debug",
+    "pack": "aiot pack"
+  },
+  "devDependencies": {
+    "aiot-toolkit": "^2.0.5"
+  }
+}

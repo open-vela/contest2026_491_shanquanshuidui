@@ -1,0 +1,48 @@
+{
+  "package": "com.disco.emotionsense",
+  "name": "情绪传感",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "minAPILevel": 1,
+  "icon": "/common/assets/icon.png",
+  "features": [
+    {
+      "name": "service.health"
+    },
+    {
+      "name": "system.velaclaw"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.vibrator"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "hapjs.permission.HEALTH"
+    }
+  ],
+  "config": {
+    "designWidth": 480,
+    "background": {
+      "features": [
+        "service.health"
+      ]
+    }
+  },
+  "router": {
+    "entry": "pages/Index",
+    "pages": {
+      "pages/Index": {
+        "component": "index",
+        "path": "/"
+      }
+    }
+  },
+  "deviceTypeList": [
+    "watch"
+  ],
+  "minPlatformVersion": 1000
+}

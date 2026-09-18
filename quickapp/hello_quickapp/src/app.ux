@@ -1,0 +1,44 @@
+<script>
+import health from './common/scripts/health.js'
+import { computeScore, esLevel } from './common/scripts/emotion.js'
+
+export default {
+  healthData: { hr: 70, spo2: 98, stress: 1, ts: 0 },
+  emotionScore: 0,
+  esLevel: 1,
+  clock: '00:00:00',
+  smoothedStress: 0,
+  history: [],
+  timerId: null,
+  onCreate() {
+    // Subscribe to health data
+    try {
+      health.subscribe((type, data) => {
+      if (type === 'hr') this.healthData.hr = data.value
+      else if (type === 'spo2') this.healthData.spo2 = data.value
+      else if (type === 'stress') {
+        this.smoothedStress = this.smoothedStress * 0.3 + data.value * 0.7
+        this.healthData.stress = Math.round(this.smoothedStress)
+      }
+      this.healthData.ts = data.timeStamp
+      this.emotionScore = computeScore(this.healthData)
+      this.esLevel = esLevel(this.emotionScore)
+      // Push to history buffer (max 60)
+      this.history.push({ ...this.healthData, score: this.emotionScore })
+      if (this.history.length > 60) this.history.shift()
+    })
+    } catch(e) {
+      console.warn('Health feature not available, using defaults')
+    }
+    // Clock timer
+    this.timerId = setInterval(() => {
+      const d = new Date()
+      this.clock = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`
+    }, 1000)
+  },
+  onDestroy() {
+    health.unsubscribe()
+    if (this.timerId) clearInterval(this.timerId)
+  }
+}
+</script>

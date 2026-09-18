@@ -1,0 +1,32 @@
+<template>
+  <div class="chart">
+    <for each="{{points}}">
+      <div class="bar" style="height: {{$item.h}}px; background: {{$item.color}};"></div>
+    </for>
+  </div>
+</template>
+<style>
+.chart {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 140px;
+  width: 100%;
+  gap: 1px;
+  padding: 0 4px;
+  border-bottom: 1px solid #3a2e22;
+}
+.bar {
+  flex: 1;
+  min-width: 2px;
+  max-width: 6px;
+  opacity: 0.85;
+}
+</style>
+<script>
+export default {
+  props: {
+    points: { default: [] }
+  }
+}
+</script>

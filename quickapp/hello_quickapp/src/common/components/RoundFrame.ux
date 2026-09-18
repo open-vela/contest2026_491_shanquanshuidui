@@ -1,0 +1,19 @@
+<template>
+  <div class="frame">
+    <slot></slot>
+  </div>
+</template>
+<style>
+.frame {
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #1a1410;
+  padding: 60px;
+  box-sizing: border-box;
+}
+</style>
+<script>
+export default {}
+</script>
